@@ -8,6 +8,22 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<script>
+		$.ajax({
+			url: "https://geoip-db.com/jsonp",
+			jsonpCallback: "callback",
+			dataType: "jsonp",
+			success: function( location ) {
+				$('#country').html(location.country_name);
+				$('#state').html(location.state);
+				$('#city').html(location.city);
+				$('#latitude').html(location.latitude);
+				$('#longitude').html(location.longitude);
+				$('#ip').html(location.IPv4);  
+			}
+		});		
+	</script>
 </head>
 <body>
 	<div data-role="page" data-theme="a">
@@ -16,6 +32,7 @@
 		</div>
 		<div data-role="content" data-theme="a">
 			<p align="center"><b>Bem vindo ao NFLIX</b></p>
+			Você esta em, <span id="city"></span> | <span id="state"></span>
 			<a href="terror.html" data-role="button" data-theme="a"><img src="images/terror.png" width="20%" /><br>Terror</a>
 
 			<a href="" data-role="button" data-theme="a"><img src="images/comedia.png" width="20%" /><br>Comédia</a>

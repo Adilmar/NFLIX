@@ -1,0 +1,108 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="themes/netflix.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+	<script>
+
+
+		$(document).ready(function(){
+			$("#btnbuscar").click(function(){
+				buscar();
+			});
+		});
+
+		$.ajax({
+			url: "https://geoip-db.com/jsonp",
+			jsonpCallback: "callback",
+			dataType: "jsonp",
+			success: function( location ) {
+				$('#country').html(location.country_name);
+				$('#state').html(location.state);
+				$('#city').html(location.city);
+				$('#latitude').html(location.latitude);
+				$('#longitude').html(location.longitude);
+				$('#ip').html(location.IPv4);  
+			}
+		});	
+
+
+
+
+		function buscar(){
+
+			var busca = encodeURIComponent($('#busca').val());
+			// console.log("teste",busca);
+
+			$("#filmes").empty();
+
+
+			$.ajax({
+				url: "http://www.theimdbapi.org/api/find/movie?title="+busca,
+				dataType: "json",
+				success: function( location ) {
+					var tam = location.length;
+					// console.log("ok",location[0].storyline); 
+
+
+
+					for (var i =0; i < tam; i++){
+
+					var imagem = location[i].poster.large;
+					var story = location[i].storyline; 
+					var title = location[i].title; 
+
+						$('#filmes').append('<tr><td><img width="50%"src="'+imagem+'"/></td><td><p style="color:#000">'+title+'</p><p align="justify" style="color:#000"></p></td></tr>');
+
+
+
+						} 
+					}
+				});	
+
+
+			}
+
+
+
+
+
+
+		</script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="a">
+			<div data-role="header" data-position="inline">
+				<h1><img src="images/logo.png" width="60%" height="auto"/></h1>
+			</div>
+			<div data-role="content" data-theme="a">
+				<p align="center"><b>Bem vindo ao NFLIX</b></p>
+				Você esta em, <span id="city"></span> | <span id="state"></span><br><br>
+
+				<label for="text-1">Digite o nome do filme: </label>
+				<input name="text-1" id="busca" value="" type="text">
+
+
+				<button class="ui-btn ui-icon-search ui-btn-icon-left" id="btnbuscar">Pesquisar</button>
+
+
+				<table id="filmes" width="100%" border="0">
+					<tbody>
+
+						
+
+					</tbody>
+				</table>
+
+
+			</div>
+		</div>
+	</body>
+	</html>

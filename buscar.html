@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>jQuery Mobile: Theme Download</title>
+	<title>NFLIX - APP</title>
 	<link rel="stylesheet" href="themes/netflix.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
@@ -57,9 +57,10 @@
 
 					var imagem = location[i].poster.large;
 					var story = location[i].storyline; 
-					var title = location[i].title; 
+					var title = location[i].title;
+					var rating = location[i].rating;
 
-						$('#filmes').append('<tr><td><img width="50%"src="'+imagem+'"/></td><td><p style="color:#000">'+title+'</p><p align="justify" style="color:#000"></p></td></tr>');
+						$('#filmes').append('<tr><td><img width="50%"src="'+imagem+'"/></td><td><p style="color:#000">'+title+' / '+rating+'</p><p align="justify" style="color:#000"></p></td></tr>');
 
 
 

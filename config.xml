@@ -2,10 +2,10 @@
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>HelloWorld</name>
     <description>
-        Hello World sample application with Pushwoosh Phonegap push notifications plugin integrated
+       Aplicativo para busca de filmes online.
     </description>
-    <author email="support@pushwoosh.com" href="http://pushwoosh.com">
-        Pushwoosh
+    <author email="akanehar@gmail.com" href="http://adilmar.com.br">
+        Adilmar Dantas
     </author>
     <preference name="phonegap-version" value="cli-6.5.0" />
     <preference name="orientation" value="default" />
@@ -30,6 +30,9 @@
         <variable name="IOS_FOREGROUND_ALERT_TYPE" value="BANNER" />
         <variable name="ANDROID_FOREGROUND_PUSH" value="false" />
     </plugin>
+
+    <icon src="icon.png" />
+
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
